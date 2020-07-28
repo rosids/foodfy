@@ -1,0 +1,39 @@
+{% extends "layout.njk" %}
+  
+{% block head %}
+    <title>Receitas</title>
+    <link rel="stylesheet" href="/receitas.css">
+{% endblock %}
+
+{% block header%}
+    <header>
+        <div class= "links">
+            <div class="links-grid">
+                <a href="/"><img src="/assets/logo.png" alt="Foodfy"></a>
+                <a href="/sobre">Sobre</a>
+                <a href="/receitas" class="bold">Receitas</a>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <main>
+
+        <nav>
+
+            <section class="recipes">
+                {% for recipe in recipes%}
+                <div class="culinary-recipes" id="{{loop.index0}}"> {# criar um id através do array #}
+                    <img src="{{recipe.image}}" alt="Imagem de {{recipe.title}}">
+                    <h4>{{recipe.title}}</h4>
+                    <p>por {{recipe.author}}</p>
+                </div>
+                {% endfor %}
+            </section>
+    
+        </nav>
+        
+    </main>
+<script src="/receitas.js"></script>
+{% endblock %}

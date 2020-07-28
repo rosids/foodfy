@@ -1,0 +1,71 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+     <title>{{recipe.title}}</title>
+    <link rel="stylesheet" href="/receitas-info.css">
+{% endblock %}
+
+{% block header%}
+    <header>
+        <div class= "links">
+            <div class="links-grid">
+                <a href="/"><img src="/assets/logo.png" alt="Foodfy"></a>
+                <a href="/sobre">Sobre</a>
+                <a href="/receitas" class="bold">Receitas</a>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="recipes">
+            <img src="{{recipes.image}}" alt="Imagem de {{recipes.title}}">
+            <h2>{{recipes.title}}</h2>
+            <p>por {{recipes.author}}</p>
+
+            <div class="ingredients">
+                <div class="cabecalho">
+                    <h4>Ingredientes</h4>
+                    <a class="button">Esconder</a>
+                </div>
+                <div class="content show">
+                    {% for ingredient in recipes.ingredients %}
+                        <ul>
+                            <li>
+                                {{ingredient}};
+                            </li>
+                        </ul>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="preparation">
+                <div class="cabecalho">
+                    <h4>Modo de Preparo</h4>
+                    <a class="button">Esconder</a>
+                </div>
+                <div class="content show">
+                    {% for preparation in recipes.preparation %}
+                        <ul>
+                            <li>
+                                {{preparation}}
+                            </li>
+                        </ul>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="info">
+                <div class="cabecalho">
+                    <h4>Informações adicionais</h4>
+                    <a class="button">Esconder</a>
+                </div>
+                <div class="content show">
+                    <p>{{recipes.information}}</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/receitas.js"></script>
+
+{% endblock %}
